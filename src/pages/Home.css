@@ -1,0 +1,302 @@
+/* ===== HOME PAGE ===== */
+
+/* Hero */
+.home-hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    background: var(--cream-bg);
+    overflow: hidden;
+    position: relative;
+}
+
+.home-hero__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    width: 100%;
+}
+
+.home-hero__content {
+    z-index: 2;
+}
+
+.home-hero__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--leaf-green-light);
+    color: var(--green-primary);
+    padding: 6px 16px;
+    border-radius: var(--radius-full);
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    animation: fadeUp 0.6s ease both;
+}
+
+.home-hero__title {
+    font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+    line-height: 1.15;
+    margin-bottom: 20px;
+    animation: fadeUp 0.7s ease 0.1s both;
+}
+
+.home-hero__subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 440px;
+    margin-bottom: 36px;
+    line-height: 1.7;
+    animation: fadeUp 0.7s ease 0.2s both;
+}
+
+.home-hero__cta {
+    animation: fadeUp 0.7s ease 0.3s both;
+}
+
+.home-hero__image-area {
+    position: relative;
+    animation: fadeIn 1s ease 0.3s both;
+}
+
+.home-hero__image-main {
+    width: 100%;
+    max-width: 520px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    object-fit: cover;
+    aspect-ratio: 4/5;
+}
+
+.home-hero__image-float {
+    position: absolute;
+    bottom: -24px;
+    left: -32px;
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    border: 4px solid var(--cream-bg);
+    animation: subtleFloat 4s ease-in-out infinite;
+}
+
+.home-hero__image-float-2 {
+    position: absolute;
+    top: 20px;
+    right: -20px;
+    width: 160px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    border: 4px solid var(--cream-bg);
+    animation: subtleFloat 4s ease-in-out infinite 1s;
+}
+
+/* Gallery Strip */
+.home-gallery {
+    display: flex;
+    gap: 12px;
+    padding: 0 24px;
+    max-width: var(--max-width);
+    margin: -40px auto 0;
+    position: relative;
+    z-index: 5;
+}
+
+.home-gallery img {
+    flex: 1;
+    height: 140px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-base);
+}
+
+.home-gallery img:hover {
+    transform: scale(1.03);
+}
+
+/* Categories Section */
+.home-categories {
+    padding: 100px 0;
+    background: var(--cream-bg);
+}
+
+.home-categories__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Why Farmosure */
+.home-why {
+    padding: 100px 0;
+    background: var(--cream-bg);
+}
+
+.home-why__leaf {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.home-why__leaf svg {
+    width: 40px;
+    height: 40px;
+    stroke: var(--leaf-green);
+}
+
+.home-why__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* CTA Banner */
+.home-cta-banner {
+    background: var(--green-primary);
+    padding: 80px 24px;
+    text-align: center;
+}
+
+.home-cta-banner__title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    color: var(--white);
+    margin-bottom: 12px;
+}
+
+.home-cta-banner__text {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    max-width: 520px;
+    margin: 0 auto 32px;
+}
+
+/* Quality Promise Strip */
+.home-promise {
+    padding: 80px 0;
+    background: var(--white);
+}
+
+.home-promise__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: center;
+}
+
+.home-promise__item {
+    padding: 24px 16px;
+    transition: all var(--transition-base);
+}
+
+.home-promise__item:hover {
+    transform: translateY(-4px);
+}
+
+.home-promise__icon {
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    background: var(--leaf-green-light);
+    transition: all var(--transition-base);
+}
+
+.home-promise__item:hover .home-promise__icon {
+    background: var(--green-primary);
+}
+
+.home-promise__icon svg {
+    width: 26px;
+    height: 26px;
+    stroke: var(--green-primary);
+    transition: stroke var(--transition-base);
+}
+
+.home-promise__item:hover .home-promise__icon svg {
+    stroke: var(--white);
+}
+
+.home-promise__label {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+}
+
+.home-promise__desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .home-categories__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .home-promise__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .home-hero__inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: 40px;
+    }
+
+    .home-hero__subtitle {
+        margin: 0 auto 36px;
+    }
+
+    .home-hero__image-float,
+    .home-hero__image-float-2 {
+        display: none;
+    }
+
+    .home-hero__image-main {
+        margin: 0 auto;
+        max-width: 360px;
+        aspect-ratio: 3/4;
+    }
+
+    .home-categories__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .home-why__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .home-gallery {
+        display: none;
+    }
+
+    .home-promise__grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}

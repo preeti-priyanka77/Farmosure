@@ -1,0 +1,102 @@
+/* ===== PRODUCTS PAGE ===== */
+
+.products-header {
+    text-align: center;
+    padding: 60px 0 40px;
+}
+
+.products-header h1 {
+    color: var(--green-primary);
+    margin-bottom: 8px;
+    animation: fadeUp 0.6s ease both;
+}
+
+.products-header p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    animation: fadeUp 0.6s ease 0.1s both;
+}
+
+/* Filter Pills */
+.products-filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 24px 48px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s ease 0.2s both;
+}
+
+.products-filter-pill {
+    padding: 10px 22px;
+    border-radius: var(--radius-full);
+    font-size: 0.88rem;
+    font-weight: 600;
+    border: 1.5px solid var(--green-primary);
+    background: var(--green-primary);
+    color: var(--white);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.products-filter-pill:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.products-filter-pill--inactive {
+    background: transparent;
+    color: var(--green-primary);
+}
+
+.products-filter-pill--inactive:hover {
+    background: var(--green-primary);
+    color: var(--white);
+}
+
+/* Product Grid */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px 80px;
+}
+
+/* CTA Block */
+.products-cta {
+    background: var(--cream-bg-alt);
+    padding: 64px 24px;
+    text-align: center;
+    border-radius: var(--radius-lg);
+    max-width: 800px;
+    margin: 0 auto 80px;
+}
+
+.products-cta h2 {
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    margin-bottom: 12px;
+}
+
+.products-cta p {
+    color: var(--text-muted);
+    margin-bottom: 28px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}

@@ -1,0 +1,223 @@
+/* ===== QUALITY PAGE ===== */
+
+/* Hero */
+.quality-hero {
+    position: relative;
+    height: 50vh;
+    min-height: 340px;
+    max-height: 500px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quality-hero__bg {
+    position: absolute;
+    inset: 0;
+    background: url('https://images.unsplash.com/photo-1574226516831-e1dff420e562?w=1400&h=600&fit=crop') center/cover no-repeat;
+}
+
+.quality-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(31, 77, 58, 0.6), rgba(31, 77, 58, 0.82));
+}
+
+.quality-hero__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--white);
+    animation: fadeUp 0.7s ease both;
+}
+
+.quality-hero__content h1 {
+    color: var(--white);
+    margin-bottom: 12px;
+}
+
+.quality-hero__content p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Steps Section */
+.quality-steps {
+    padding: 100px 0;
+}
+
+.quality-step {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+    max-width: var(--max-width);
+    margin: 0 auto 80px;
+    padding: 0 24px;
+}
+
+.quality-step:last-child {
+    margin-bottom: 0;
+}
+
+.quality-step--reverse {
+    direction: rtl;
+}
+
+.quality-step--reverse>* {
+    direction: ltr;
+}
+
+.quality-step__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--green-primary);
+    margin-bottom: 16px;
+}
+
+.quality-step__badge svg {
+    width: 22px;
+    height: 22px;
+    stroke: var(--white);
+    stroke-width: 2;
+    fill: none;
+}
+
+.quality-step__title {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+}
+
+.quality-step__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.quality-step__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: var(--text-body);
+    line-height: 1.6;
+}
+
+.quality-step__list li::before {
+    content: '•';
+    color: var(--leaf-green);
+    font-weight: 700;
+    font-size: 1.2rem;
+    line-height: 1.4;
+    flex-shrink: 0;
+}
+
+.quality-step__image {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.quality-step__image img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.quality-step__image:hover img {
+    transform: scale(1.03);
+}
+
+/* Certifications */
+.quality-certs {
+    padding: 80px 0;
+    background: var(--white);
+}
+
+.quality-certs__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: center;
+}
+
+.quality-cert {
+    padding: 32px 16px;
+    transition: all var(--transition-base);
+}
+
+.quality-cert:hover {
+    transform: translateY(-4px);
+}
+
+.quality-cert__icon {
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    background: var(--leaf-green-light);
+    transition: all var(--transition-base);
+}
+
+.quality-cert:hover .quality-cert__icon {
+    background: var(--green-primary);
+}
+
+.quality-cert__icon svg {
+    width: 26px;
+    height: 26px;
+    stroke: var(--green-primary);
+    stroke-width: 1.5;
+    fill: none;
+    transition: stroke var(--transition-fast);
+}
+
+.quality-cert:hover .quality-cert__icon svg {
+    stroke: var(--white);
+}
+
+.quality-cert__title {
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+}
+
+.quality-cert__desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .quality-step {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .quality-step--reverse {
+        direction: ltr;
+    }
+
+    .quality-certs__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .quality-step__image img {
+        height: 260px;
+    }
+}
