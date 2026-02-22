@@ -1,10 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useCart } from '../context/CartContext';
-import { useWishlist } from '../context/WishlistContext';
-import { useAuth } from '../context/AuthContext';
 import './Header.css';
-import './HeaderExt.css';
 
 const NAV_LINKS = [
     { label: 'Home', to: '/' },
@@ -14,14 +10,33 @@ const NAV_LINKS = [
     { label: 'Contact', to: '/contact' },
 ];
 
+const SOCIAL_LINKS = [
+    {
+        name: 'Instagram',
+        url: 'https://instagram.com',
+        icon: (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+        )
+    },
+    {
+        name: 'Facebook',
+        url: 'https://facebook.com',
+        icon: (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+        )
+    }
+];
+
 export default function Header() {
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const location = useLocation();
-
-    const { setIsOpen: openCart, totalItems: cartCount } = useCart();
-    const { totalItems: wishlistCount } = useWishlist();
-    const { user, isAuthenticated, logout } = useAuth();
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 20);
@@ -43,14 +58,6 @@ export default function Header() {
         <>
             <header className={`header ${scrolled ? 'header--scrolled' : ''}`}>
                 <div className="header__inner">
-                    <button
-                        className={`header__burger ${menuOpen ? 'header__burger--open' : ''}`}
-                        onClick={() => setMenuOpen(!menuOpen)}
-                        aria-label="Toggle menu"
-                    >
-                        <span /><span /><span />
-                    </button>
-
                     <Link to="/" className="header__logo">
                         <div className="header__logo-icon">
                             <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -63,80 +70,71 @@ export default function Header() {
                         <span className="header__logo-text">Farmosure</span>
                     </Link>
 
-                    <nav className="header__nav">
-                        {NAV_LINKS.map(link => (
-                            <Link
-                                key={link.to}
-                                to={link.to}
-                                className={`header__nav-link ${location.pathname === link.to ? 'active' : ''}`}
-                            >
-                                {link.label}
-                            </Link>
-                        ))}
-                    </nav>
+                    <div className="header__right">
+                        <nav className="header__nav">
+                            {NAV_LINKS.map(link => (
+                                <Link
+                                    key={link.to}
+                                    to={link.to}
+                                    className={`header__nav-link ${location.pathname === link.to ? 'active' : ''}`}
+                                >
+                                    {link.label}
+                                </Link>
+                            ))}
+                        </nav>
 
-                    <div className="header__icons">
-                        {/* Wishlist */}
-                        <Link to="/products" className="header__icon-btn" aria-label="Wishlist">
-                            <svg viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
-                                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
-                            </svg>
-                            {wishlistCount > 0 && <span className="header__badge">{wishlistCount}</span>}
-                        </Link>
+                        <div className="header__socials">
+                            {SOCIAL_LINKS.map(social => (
+                                <a
+                                    key={social.name}
+                                    href={social.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="header__social-link"
+                                    aria-label={social.name}
+                                >
+                                    {social.icon}
+                                </a>
+                            ))}
+                        </div>
 
-                        {/* Cart */}
-                        <button className="header__icon-btn" onClick={() => openCart()} aria-label="Cart">
-                            <svg viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
-                                <circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" />
-                                <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
-                            </svg>
-                            {cartCount > 0 && <span className="header__badge">{cartCount}</span>}
+                        <button
+                            className={`header__burger ${menuOpen ? 'header__burger--open' : ''}`}
+                            onClick={() => setMenuOpen(!menuOpen)}
+                            aria-label="Toggle menu"
+                        >
+                            <span /><span /><span />
                         </button>
-
-                        {/* User */}
-                        {isAuthenticated ? (
-                            <div className="header__user" onClick={logout} title="Click to logout">
-                                <div className="header__avatar">{user.avatar}</div>
-                                <span className="header__username">{user.name}</span>
-                            </div>
-                        ) : (
-                            <Link to="/login" className="header__login">Log In</Link>
-                        )}
                     </div>
                 </div>
             </header>
 
             {/* Mobile Menu Overlay */}
             <div className={`header__mobile-menu ${menuOpen ? 'header__mobile-menu--open' : ''}`}>
-                {NAV_LINKS.map(link => (
-                    <Link
-                        key={link.to}
-                        to={link.to}
-                        className={`header__nav-link ${location.pathname === link.to ? 'active' : ''}`}
-                    >
-                        {link.label}
-                    </Link>
-                ))}
-                <div style={{ display: 'flex', gap: '20px', marginTop: '20px' }}>
-                    <Link to="/products" className="header__icon-btn" aria-label="Wishlist">
-                        <svg viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
-                        </svg>
-                        {wishlistCount > 0 && <span className="header__badge">{wishlistCount}</span>}
-                    </Link>
-                    <button className="header__icon-btn" onClick={() => { openCart(); setMenuOpen(false); }} aria-label="Cart">
-                        <svg viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
-                            <circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" />
-                            <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
-                        </svg>
-                        {cartCount > 0 && <span className="header__badge">{cartCount}</span>}
-                    </button>
+                <div className="header__mobile-inner">
+                    {NAV_LINKS.map(link => (
+                        <Link
+                            key={link.to}
+                            to={link.to}
+                            className={`header__nav-link ${location.pathname === link.to ? 'active' : ''}`}
+                        >
+                            {link.label}
+                        </Link>
+                    ))}
+                    <div className="header__mobile-socials">
+                        {SOCIAL_LINKS.map(social => (
+                            <a
+                                key={social.name}
+                                href={social.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="header__social-link"
+                            >
+                                {social.icon}
+                            </a>
+                        ))}
+                    </div>
                 </div>
-                {isAuthenticated ? (
-                    <button className="header__login" onClick={logout}>Log Out ({user.name})</button>
-                ) : (
-                    <Link to="/login" className="header__login">Log In</Link>
-                )}
             </div>
 
             <div className="header-spacer" />

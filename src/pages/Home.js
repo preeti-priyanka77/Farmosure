@@ -8,8 +8,8 @@ const CATEGORIES = [
     { name: 'Chicken', image: 'https://images.unsplash.com/photo-1587593810167-a84920ea0781?w=400&h=400&fit=crop' },
     { name: 'Mutton', image: 'https://images.unsplash.com/photo-1602470520998-f4a52199a3d6?w=400&h=400&fit=crop' },
     { name: 'Fish', image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=400&fit=crop' },
-    { name: 'Seafood', image: 'https://images.unsplash.com/photo-1565680018093-ebb6b9ab5460?w=400&h=400&fit=crop' },
-    { name: 'Ready to Cook', image: 'https://images.unsplash.com/photo-1432139509613-5c4255a1d863?w=400&h=400&fit=crop' },
+    { name: 'Seafood', image: 'https://images.unsplash.com/photo-1691658410974-165b3efeda2b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHNlYSUyMGZvb2R8ZW58MHx8MHx8fDA%3D' },
+    { name: 'Ready to Cook', image: 'https://images.unsplash.com/photo-1595579547936-c3a0e6c171fc?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHNlYSUyMGZvb2R8ZW58MHx8MHx8fDA%3D' },
 ];
 
 const GALLERY = [
